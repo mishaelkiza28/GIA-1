@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIA – Website Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #E8CE70;
+    --gold-pale: #FBF7E8;
+    --cobalt: #004191;
+    --cobalt-dark: #002F6C;
+    --cobalt-mid: #0057BD;
+    --green: #1B7D24;
+    --green-dark: #145C1B;
+    --white: #FAFAF8;
+    --off-white: #F4F6FA;
+    --text: #1C1C1A;
+    --muted: #5A5F6B;
+    --border: #C8D4E8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--cobalt);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,.35);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    text-decoration: none;
+  }
+
+  .nav-logo {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--cobalt);
+    flex-shrink: 0;
+  }
+
+  .nav-brand span {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    letter-spacing: .02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: .65rem 1rem;
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: color .2s;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--cobalt);
+    background-image: radial-gradient(ellipse at 70% 50%, rgba(212,175,55,.15) 0%, transparent 65%);
+    padding: 5rem 2.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'GIA';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 22vw;
+    font-weight: 900;
+    color: rgba(212,175,55,.05);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(212,175,55,.15);
+    border: 1px solid rgba(212,175,55,.45);
+    color: var(--gold-light);
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .3rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: .75rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero p {
+    color: rgba(255,255,255,.65);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+
+  .toc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    justify-content: center;
+    position: relative;
+  }
+
+  .toc-pills a {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(212,175,55,.35);
+    color: var(--gold-light);
+    padding: .45rem 1.1rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 500;
+    transition: background .2s, border-color .2s;
+  }
+
+  .toc-pills a:hover {
+    background: rgba(212,175,55,.18);
+    border-color: var(--gold);
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SECTION ── */
+  .doc-section {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .doc-section:last-of-type { border-bottom: none; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .6rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 18px; height: 2px;
+    background: var(--gold);
+  }
+
+  .doc-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .doc-section h3 {
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 2rem 0 .6rem;
+    padding-left: .9rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  .doc-section p {
+    color: #3A3A35;
+    margin-bottom: 1rem;
+  }
+
+  .doc-section ul {
+    list-style: none;
+    margin: .5rem 0 1.2rem;
+    padding: 0;
+  }
+
+  .doc-section ul li {
+    padding: .3rem 0 .3rem 1.4rem;
+    position: relative;
+    color: #3A3A35;
+  }
+
+  .doc-section ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: .75rem;
+    top: .45rem;
+  }
+
+  /* ── CARDS (About) ── */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .value-card {
+    background: var(--gold-pale);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 1.2rem 1.3rem;
+    border-radius: 4px;
+  }
+
+  .value-card strong {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: .3rem;
+  }
+
+  .value-card p {
+    font-size: .85rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps {
+    counter-reset: steps;
+    margin: 1.5rem 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.4rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .step-body strong {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: .2rem;
+  }
+
+  .step-body p { font-size: .9rem; margin: 0; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.3rem;
+    border-radius: 0 4px 4px 0;
+    margin: 1.2rem 0;
+    font-size: .9rem;
+    color: var(--muted);
+  }
+
+  .callout strong { color: var(--green); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green);
+    color: rgba(255,255,255,.55);
+    text-align: center;
+    padding: 2rem;
+    font-size: .82rem;
+  }
+
+  footer span { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3.5rem 1.2rem 3rem; }
+    .container { padding: 0 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">G</div>
+    <span>Golden Investment Association</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#terms">Terms &amp; Conditions</a></li>
+    <li><a href="#privacy">Privacy Policy</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Official Website Documentation</div>
+  <h1>Golden Investment<br><em>Association</em></h1>
+  <p>Together We Grow — Adebe Cell, Kamdini Town Council, Oyam District, Uganda. Est. 2025.</p>
+  <div class="toc-pills">
+    <a href="#about">About GIA</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#terms">Terms &amp; Conditions</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#disclaimer">Investment Disclaimer</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
+<section id="about" class="doc-section">
+  <div class="container">
+    <div class="section-tag">Who We Are</div>
+    <h2>About Golden Investment Association</h2>
+
+    <p>The <strong>Golden Investment Association (GIA)</strong> is a member-owned savings and investment group based in Adebe Cell, Western Ward, Kamdini Town Council, Oyam District, Uganda. Founded in 2025, GIA unites members under a shared commitment to financial discipline, collective action, and long-term wealth creation.</p>
+
+    <p>Operating under the motto <strong>"Make Your Money Work Harder"</strong> and the tagline <em>"Invest Smart, Live Well,"</em> GIA provides a structured, transparent platform through which members save, access affordable credit, and participate in group investments.</p>
+
+    <h3>Vision</h3>
+    <p>To build sustainable wealth for members through long-term savings and strategic investments.</p>
+
+    <h3>Mission</h3>
+    <p>To empower members through joint investment initiatives, financial literacy, and collective action for long-term financial prosperity.</p>
+
+    <h3>Objectives</h3>
+    <ul>
+      <li>Promote and foster a culture of savings and disciplined financial planning</li>
+      <li>Mobilize resources for investment in profitable ventures</li>
+      <li>Provide financial literacy to members</li>
+      <li>Create income-generating projects for collective benefit</li>
+      <li>Encourage unity, accountability, and transparency</li>
+      <li>Support members during times of need</li>
+      <li>Provide affordable loans to members</li>
+      <li>Support asset acquisition and capital growth</li>
+    </ul>
+
+    <h3>Core Values</h3>
+    <div class="value-grid">
+      <div class="value-card"><strong>Integrity</strong><p>Honesty and ethical conduct in every activity, always putting the association's interests above personal gain.</p></div>
+      <div class="value-card"><strong>Accountability</strong><p>All members and leaders are responsible for funds, property, and obligations entrusted to them.</p></div>
+      <div class="value-card"><strong>Transparency</strong><p>Financial records, decisions, and operations are properly documented and accessible to members.</p></div>
+      <div class="value-card"><strong>Discipline</strong><p>Punctuality, adherence to financial commitments, and orderly conduct at all times.</p></div>
+      <div class="value-card"><strong>Teamwork</strong><p>Cooperation and mutual respect, working together to achieve common goals.</p></div>
+      <div class="value-card"><strong>Professionalism</strong><p>Competence, fairness, and responsibility in all association activities.</p></div>
+      <div class="value-card"><strong>Innovation</strong><p>Creativity and openness to new ideas that enhance efficiency, growth, and sustainability.</p></div>
+    </div>
+
+    <h3>Governance</h3>
+    <p>GIA is governed by a <strong>General Assembly</strong> — the supreme authority comprising all registered members — and an elected <strong>Executive Committee</strong> that manages day-to-day affairs. The Executive Committee consists of a Chairperson, Vice Chairperson, Secretary, Treasurer, and additional elected members. A Legal Advisor and an External Auditor provide independent oversight.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════ -->
+<section id="how-it-works" class="doc-section">
+  <div class="container">
+    <div class="section-tag">Membership &amp; Savings</div>
+    <h2>How GIA Works</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Join via an Existing Member</strong>
+          <p>Membership is open to any willing adult who accepts GIA's objectives and long-term commitment. Applicants are introduced by an existing member, approved by the Executive Committee, and entered into the membership register.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Pay the Entrance Fee</strong>
+          <p>A one-time, non-refundable membership fee of <strong>UGX 50,000</strong> is required upon joining. This covers registration and administrative setup costs.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Make Monthly Savings</strong>
+          <p>Every member contributes a minimum of <strong>UGX 50,000 per month</strong>. Additional voluntary savings are welcome. Contributions are due by the first week of each month; late contributions attract a fine of UGX 5,000.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Access Loans</strong>
+          <p>Members in good standing may apply for loans during regular members' meetings. All loans are guaranteed by the member's own savings and one or more co-guarantors. Non-members may access loans only through a registered member guarantor.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Participate in Group Investments</strong>
+          <p>After accumulating savings for one year, the association collectively decides on investment ventures. Investment decisions require a two-thirds (2/3) majority approval by members.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Share-Out at Cycle End</strong>
+          <p>At the close of each savings cycle, remaining funds and profits are distributed to members in proportion to their total savings after settling all liabilities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Important:</strong> GIA is a long-term savings and investment vehicle. Persons seeking short-term participation or early withdrawal of savings are not eligible for membership. A member who withdraws early receives up to 60% of total savings at the end of the savings cycle, after settling all outstanding loans.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TERMS & CONDITIONS
+═══════════════════════════════════════ -->
+<section id="terms" class="doc-section">
+  <div class="container">
+    <div class="section-tag">Legal</div>
+    <h2>Terms &amp; Conditions</h2>
+    <p><em>Effective Date: 1 January 2026 &nbsp;|&nbsp; Location: Adebe Cell, Kamdini Town Council, Oyam District, Uganda</em></p>
+
+    <p>These Terms and Conditions govern your access to and use of the Golden Investment Association (GIA) website and any services, information, or resources made available through it. By accessing this website, you agree to be bound by these Terms. If you do not agree, please discontinue use immediately.</p>
+
+    <h3>1. About GIA</h3>
+    <p>Golden Investment Association (GIA) is a member-owned savings and investment group established in 2025 and registered in Uganda. GIA is not a bank, microfinance institution, or regulated investment fund. It is a voluntary group association governed by its Constitution and By-Laws.</p>
+
+    <h3>2. Website Use</h3>
+    <p>This website is provided for informational purposes only. The content on this site describes GIA's structure, membership, and operations. It does not constitute a public offer of securities, an invitation to deposit funds, or regulated financial advice.</p>
+    <ul>
+      <li>You must be 18 years of age or older to apply for membership</li>
+      <li>You may not use this website for any unlawful or fraudulent purpose</li>
+      <li>You may not attempt to gain unauthorized access to any part of this website or its systems</li>
+      <li>GIA reserves the right to restrict access to the website at any time without notice</li>
+    </ul>
+
+    <h3>3. Membership Obligations</h3>
+    <p>By registering as a member of GIA, you agree to:</p>
+    <ul>
+      <li>Abide by the GIA Constitution, By-Laws, and all lawful decisions of the General Assembly and Executive Committee</li>
+      <li>Make regular monthly savings contributions of not less than UGX 50,000</li>
+      <li>Attend meetings or provide a valid apology in advance</li>
+      <li>Repay all loans on time and in full, including applicable interest</li>
+      <li>Disclose any actual or potential conflict of interest to the Executive Committee</li>
+      <li>Uphold confidentiality regarding internal association matters</li>
+    </ul>
+
+    <h3>4. Savings and Withdrawals</h3>
+    <p>Savings contributed by a member remain the property of that member but are held collectively for the benefit of the association. No member may withdraw savings before the end of the agreed savings cycle except under exceptional circumstances approved by the membership. A member who withdraws early shall receive up to 60% of total savings after settling outstanding loans, as agreed by the Executive Committee.</p>
+
+    <h3>5. Loans</h3>
+    <p>Loan eligibility, limits, interest rates, and repayment terms are determined by the membership at regular meetings and are subject to change. GIA makes no guarantee of loan availability at any time. A member who defaults on a loan may have the outstanding amount recovered from their savings or guarantor's savings, and may face suspension or expulsion in cases of persistent default.</p>
+
+    <h3>6. Investments</h3>
+    <p>Group investment decisions are made collectively by members and require a two-thirds (2/3) majority vote. Past investment outcomes do not guarantee future returns. Members acknowledge that all investments carry risk and that GIA cannot guarantee profit or the return of capital from investment activities.</p>
+
+    <h3>7. Intellectual Property</h3>
+    <p>All content on this website — including text, logos, and graphics — is the property of Golden Investment Association. You may not reproduce, distribute, or use any content without prior written consent from GIA.</p>
+
+    <h3>8. Limitation of Liability</h3>
+    <p>GIA provides this website on an "as-is" basis and makes no warranties regarding the accuracy, completeness, or fitness for purpose of the content. GIA shall not be liable for any loss or damage arising from reliance on information contained on this site, or from the use of or inability to use the website.</p>
+
+    <h3>9. Amendments to Terms</h3>
+    <p>GIA reserves the right to update these Terms at any time. Changes will be communicated to members in accordance with the GIA Constitution. Continued use of the website after changes are published constitutes your acceptance of the revised Terms.</p>
+
+    <h3>10. Governing Law</h3>
+    <p>These Terms are governed by and construed in accordance with the laws of the Republic of Uganda. Any disputes shall be subject to the jurisdiction of the courts of Uganda.</p>
+
+    <h3>11. Contact</h3>
+    <p>For questions regarding these Terms, please contact the GIA Secretary through official association communication channels.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRIVACY POLICY
+═══════════════════════════════════════ -->
+<section id="privacy" class="doc-section">
+  <div class="container">
+    <div class="section-tag">Data Protection</div>
+    <h2>Privacy Policy</h2>
+    <p><em>Effective Date: 1 January 2026</em></p>
+
+    <p>Golden Investment Association (GIA) is committed to protecting the privacy and personal data of its members and website visitors. This Privacy Policy explains what information we collect, how we use it, and your rights in relation to your data. GIA operates in compliance with applicable data protection principles under Ugandan law.</p>
+
+    <h3>1. Information We Collect</h3>
+    <p>GIA collects personal information only to the extent necessary to administer membership and association operations. This may include:</p>
+    <ul>
+      <li>Full name, date of birth, and National ID number</li>
+      <li>Phone number, email address, and home address</li>
+      <li>Next of kin details and relationship</li>
+      <li>Financial information including savings contributions, loan records, and repayment history</li>
+      <li>Meeting attendance and participation records</li>
+    </ul>
+
+    <h3>2. How We Use Your Information</h3>
+    <p>Personal information collected is used exclusively for:</p>
+    <ul>
+      <li>Processing and managing membership registration</li>
+      <li>Recording savings, loans, and financial transactions</li>
+      <li>Communicating meeting notices, decisions, and association updates</li>
+      <li>Complying with legal and regulatory obligations</li>
+      <li>Administering welfare support and next-of-kin notifications where applicable</li>
+    </ul>
+
+    <h3>3. Confidentiality</h3>
+    <p>In accordance with Article 12.2 of the GIA Constitution, all members and leaders are bound by a strict obligation of confidentiality. Financial records, personal member details, and internal deliberations shall not be disclosed to unauthorized persons. This obligation continues even after a member leaves the association or their term of office ends.</p>
+
+    <h3>4. Data Sharing</h3>
+    <p>GIA does not sell, rent, or share member personal data with third parties, except:</p>
+    <ul>
+      <li>Where required by law or a valid court order</li>
+      <li>With the association's external auditor for financial audit purposes, bound by professional confidentiality obligations</li>
+      <li>With the association's legal advisor for legal matters, where necessary</li>
+    </ul>
+
+    <h3>5. Data Storage and Security</h3>
+    <p>Member records are maintained in a secure savings passbook and central register held by the Treasurer and Secretary. Digital records, where maintained, are accessible only to authorized Executive Committee members. All financial transactions are documented and subject to dual-signatory controls.</p>
+
+    <h3>6. Your Rights</h3>
+    <p>Every registered member has the right to:</p>
+    <ul>
+      <li>Access their personal information and savings records upon reasonable notice to the Secretary</li>
+      <li>Request correction of inaccurate personal data</li>
+      <li>Be informed of how their data is used</li>
+    </ul>
+
+    <h3>7. Cookies and Website Data</h3>
+    <p>This website may use basic session cookies to improve user experience. No personal data is collected through the website beyond what is voluntarily submitted through membership enquiry or contact forms.</p>
+
+    <h3>8. Changes to This Policy</h3>
+    <p>This Privacy Policy may be updated from time to time. Any material changes will be communicated to members in accordance with the GIA Constitution. The current version will always be available on this website.</p>
+
+    <h3>9. Contact</h3>
+    <p>For any privacy-related concerns or requests, please contact the GIA Secretary through official association communication channels.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INVESTMENT DISCLAIMER
+═══════════════════════════════════════ -->
+<section id="disclaimer" class="doc-section">
+  <div class="container">
+    <div class="section-tag">Risk Notice</div>
+    <h2>Investment Disclaimer</h2>
+    <p><em>Effective Date: 1 January 2026</em></p>
+
+    <div class="callout">
+      <strong>Please read this disclaimer carefully.</strong> Membership in GIA involves financial commitments and investment risk. The information on this website and provided by GIA does not constitute regulated financial advice.
+    </div>
+
+    <h3>1. Nature of GIA</h3>
+    <p>Golden Investment Association (GIA) is a voluntary member savings and investment group. It is not a bank, licensed deposit-taking institution, licensed investment fund, or regulated entity under the financial services laws of Uganda. GIA does not hold a licence from the Bank of Uganda, the Capital Markets Authority of Uganda, or any other regulatory body.</p>
+
+    <h3>2. No Guarantee of Returns</h3>
+    <p>Membership in GIA does not guarantee any financial return, profit, or growth of savings. All investment decisions are made collectively by members. The value of investments can go down as well as up. Past performance of any investment activity undertaken by GIA is not a reliable indicator of future results.</p>
+
+    <h3>3. Risk Acknowledgement</h3>
+    <p>By joining GIA, members acknowledge and accept the following risks:</p>
+    <ul>
+      <li><strong>Investment Risk:</strong> Group investment ventures may lose value or fail entirely</li>
+      <li><strong>Liquidity Risk:</strong> Savings are locked for the duration of the savings cycle and cannot be freely withdrawn</li>
+      <li><strong>Credit Risk:</strong> Member or guarantor defaults may affect the overall pool of funds available</li>
+      <li><strong>Operational Risk:</strong> Errors, misconduct, or mismanagement — while governed against by the GIA Constitution — cannot be fully eliminated</li>
+    </ul>
+
+    <h3>4. Not Financial Advice</h3>
+    <p>Nothing on this website, in the GIA Constitution, or communicated by GIA officers should be construed as personal financial, legal, or tax advice. Members are encouraged to seek independent professional advice before making significant financial decisions, including the decision to join GIA.</p>
+
+    <h3>5. Member Responsibility</h3>
+    <p>Members are responsible for understanding their obligations under the GIA Constitution and By-Laws before joining. Failure to meet savings, loan repayment, or conduct obligations may result in penalties, suspension, or expulsion as provided in the Constitution.</p>
+
+    <h3>6. Long-Term Commitment</h3>
+    <p>GIA is explicitly designed for long-term savings and investment. Individuals seeking short-term participation or early liquidity are not suitable for membership. Members who withdraw early will not receive the full value of their savings.</p>
+
+    <h3>7. Limitation of Liability</h3>
+    <p>GIA, its Executive Committee, and its members shall not be liable to any person for any loss, claim, damage, or expense of any kind arising from reliance on information provided by GIA, participation in group investments, or decisions made by the General Assembly or Executive Committee in good faith and in accordance with the Constitution.</p>
+
+    <h3>8. Regulatory Compliance</h3>
+    <p>If and when GIA becomes subject to any regulatory requirement under the laws of Uganda, the association shall take all necessary steps to comply. Members will be informed of any such developments in accordance with the GIA Constitution.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Golden Investment Association (GIA)</span> &nbsp;·&nbsp; Adebe Cell, Kamdini Town Council, Oyam District, Uganda &nbsp;·&nbsp; <em>"Together We Grow"</em></p>
+  <p style="margin-top:.5rem; font-size:.75rem;">This documentation is governed by the GIA Constitution effective 1 January 2026.</p>
+</footer>
+
+</body>
+</html>
