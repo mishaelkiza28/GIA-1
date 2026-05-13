@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with GIA - Contact us for membership inquiries and more.">
+  <title>Contact - GIA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-container">
+    <a class="nav-brand" href="../index.html">
+      <div class="nav-logo">G</div>
+      <span>GIA</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="legal.html">Legal</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="min-height: 300px;">
+  <div class="hero-content">
+    <div class="hero-badge">Get in Touch</div>
+    <h1>Contact <em>GIA</em></h1>
+    <p>Have questions? We'd love to hear from you. Reach out to us today.</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section>
+  <div class="container-wide">
+    <div class="grid-2">
+      <!-- CONTACT FORM -->
+      <div>
+        <div class="section-head">
+          <div class="section-tag">Send a Message</div>
+          <h2>Get in Touch</h2>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic...</option>
+              <option value="membership">Membership Inquiry</option>
+              <option value="loans">Loan Information</option>
+              <option value="investment">Investment Questions</option>
+              <option value="general">General Inquiry</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 1rem;" id="formStatus"></p>
+        </form>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div>
+        <div class="section-head">
+          <div class="section-tag">Information</div>
+          <h2>Contact Information</h2>
+        </div>
+
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <h3 style="margin-top: 0;">📍 Location</h3>
+          <p><strong>Adebe Cell</strong></p>
+          <p>Western Ward</p>
+          <p>Kamdini Town Council</p>
+          <p>Oyam District, Uganda</p>
+        </div>
+
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <h3 style="margin-top: 0;">👤 Contact Person</h3>
+          <p><strong>Secretary</strong></p>
+          <p>For membership inquiries and general information, please contact the GIA Secretary through official association communication channels.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top: 0;">📅 Office Hours</h3>
+          <p>General Assembly Meetings held monthly on scheduled dates.</p>
+          <p style="color: var(--text-light); font-size: 0.9rem;">Specific contact details available through official GIA communications.</p>
+        </div>
+
+        <div class="callout">
+          <strong>Note:</strong> We are committed to responding to all inquiries within a reasonable timeframe. Thank you for your patience.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section-light">
+  <div class="container">
+    <div class="section-head text-center">
+      <div class="section-tag">Help</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>How much is the membership fee?</h4>
+        <p>The membership fee amount is set by member consensus at General Assembly meetings. Contact us for current rates.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>What are the minimum savings contributions?</h4>
+        <p>Monthly savings amounts are set by the membership and may vary. These are determined democratically to ensure accessibility for all members.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Can I withdraw my savings anytime?</h4>
+        <p>Members can withdraw savings at the end of agreed savings cycles. Early withdrawals may receive up to 60% of total savings after settling loans.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>What loan options are available?</h4>
+        <p>Loan eligibility, limits, interest rates, and repayment terms are determined by the membership. Loans must be used responsibly and repaid as agreed.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>How are investment decisions made?</h4>
+        <p>All members discuss and vote on investment opportunities. Decisions require a two-thirds (2/3) majority vote from the General Assembly.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>What happens if I miss a savings contribution?</h4>
+        <p>Regular contributions are required to maintain membership. Persistent non-payment may result in discussions about your membership status.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Is my money safe with GIA?</h4>
+        <p>GIA is governed by transparent practices, democratic oversight, and independent audits. An External Auditor reviews our financial records regularly.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>How often do meetings occur?</h4>
+        <p>General Assembly meetings are held monthly on scheduled dates. Emergency meetings can be called if needed to address urgent matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container text-center">
+    <h2>Ready to Join?</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Fill out the contact form above or reach out directly. Our team will be happy to help you get started.
+    </p>
+    <a href="membership.html" class="btn btn-primary">Explore Membership</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="legal.html">Terms & Conditions</a>
+    <a href="legal.html#privacy">Privacy Policy</a>
+    <a href="legal.html#disclaimer">Investment Disclaimer</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <p>© 2026 <span>Golden Investment Association (GIA)</span> · Adebe Cell, Kamdini Town Council, Oyam District, Uganda</p>
+  <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.9;"><em>"Together We Grow"</em></p>
+</footer>
+
+<style>
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .contact-form .btn {
+    width: 100%;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 0.375rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  .faq-item h4 {
+    color: var(--green);
+    margin-bottom: 0.8rem;
+    margin-top: 0;
+  }
+
+  .faq-item p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+</style>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
